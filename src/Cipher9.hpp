@@ -12,8 +12,16 @@ class Cipher9
     public:
         /**
          * Creates a new program instance with the given command line arguments.
+         *
+         * @param argc The number of arguments.
+         * @param argv An array of argument strings.
          */
         Cipher9(int argc, char** argv);
+
+        /**
+         * Prints the program usage to standard output.
+         */
+        void printUsage();
 
         /**
          * Runs cipher9.
@@ -24,35 +32,32 @@ class Cipher9
         /**
          * Indicates the encrypt operation.
          */
-        bool doEncrypt;
+        bool doEncrypt = false;
 
         /**
          * Indicates the decrypt operation.
          */
-        bool doDecrypt;
+        bool doDecrypt = false;
+
+        /**
+         * Indicates the help message should be shown.
+         */
+        bool doHelp = false;
+
+        /**
+         * Indicates if the key should be printed with the text.
+         */
+        bool printKey = false;
 
         /**
          * The name of the cipher to use.
          */
-        std::string* cipherName;
+        std::string* cipherName = NULL;
 
         /**
          * The cipher key to use.
          */
-        int key;
-
-        /**
-         * The input text to parse.
-         */
-        std::string inputText;
-
-        /**
-         * Parses the given arguments.
-         *
-         * @param argc The number of arguments.
-         * @param argv An array of argument strings.
-         */
-        void parseArgs(int argc, char** argv);
+        int key = 0;
 };
 
 #endif
