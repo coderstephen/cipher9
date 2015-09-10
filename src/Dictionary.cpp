@@ -6,21 +6,23 @@
 using namespace std;
 
 
+Dictionary::Dictionary()
+{
+    ifstream file("/usr/share/dict/words");
+    string word;
+
+    while (file.good()) {
+        file >> word;
+        word[0] = tolower(word[0]);
+        words.insert(word);
+    }
+
+    file.close();
+}
+
 bool Dictionary::lookup(string word)
 {
     transform(word.begin(), word.end(), word.begin(), ::tolower);
 
-    ifstream file("/usr/share/dict/words");
-    string current;
-
-    while (file.good()) {
-        file >> current;
-        current[0] = tolower(current[0]);
-
-        if (file.good() && current == word) {
-            return true;
-        }
-    }
-
-    return false;
+    return words.count(word) > 0;
 }
