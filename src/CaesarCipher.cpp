@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <tuple>
@@ -59,11 +60,23 @@ tuple<int, string> CaesarCipher::crack(string text)
     for (int key = 0; key < 26; ++key) {
         plain = decrypt(key, text);
 
+        // Parse the plaintext into words to do a dictionary match.
         stringstream s(plain);
-        while (s >> word) {
-            if (dictionary->lookup(word)) {
-                return tuple<int, string>(key, plain);
+        unsigned int count = 0, matchedWords = 0;
+        for (; s >> word; ++count) {
+            // Strip punctuation from the word.
+            string strippedWord;
+            remove_copy_if(word.begin(), word.end(), back_inserter(strippedWord), ptr_fun<int, int>(&ispunct));
+
+            // Check if the word is in the dictionary.
+            if (dictionary->lookup(strippedWord)) {
+                ++matchedWords;
             }
+        }
+
+        // If at least 50% of the words are in the dictionary, use this key as the solution.
+        if (matchedWords > count / 2) {
+            return tuple<int, string>(key, plain);
         }
     }
 
