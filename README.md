@@ -1,4 +1,4 @@
-# cipher9
+# [cipher9](https://github.com/coderstephen/cipher9)
 A little code breaker program for experimentation. Part of a class project.
 
 Reads cipher text from stdin and attempts to crack it, outputting
@@ -26,6 +26,13 @@ For example, to encrypt the string "hello world" with a Caesar cipher using the
 key `7`, we can run:
 
     echo "hello world" | cipher9 -e -k 7
+
+The output will be "olssv dvysk". We can crack the encrypted message by giving
+cipher9 no arguments:
+
+    echo "olssv dvysk" | cipher9
+
+The output will be the original message, "hello world".
 
 ## License
 This program is licensed under the [MIT license](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for details.
