@@ -5,6 +5,13 @@ Reads cipher text from stdin and attempts to crack it, outputting
 the plain text. Default cipher used is "caesar". Specify another
 cipher to use with `-c`.
 
+## Compiling
+Compilation can be done with the standard `make` build tool:
+
+    make
+
+The resulting binary will be placed at `bin/cipher9`.
+
 ## Usage
     cipher9 [OPTION]...
 
