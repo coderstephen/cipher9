@@ -19,17 +19,28 @@ class CaesarCipher : public ICipher
         CaesarCipher(Dictionary* dictionary);
 
         /**
-         * @inheritDoc
+         * Encrypts the given text using a Caesar cipher.
+         *
+         * @param  key  The cipher key to use.
+         * @param  text The plain text to encrypt.
+         * @return      The encrypted cipher text.
          */
         virtual std::string encrypt(int key, std::string text);
 
         /**
-         * @inheritDoc
+         * Decrypts the given text encrypted with a Caesar cipher.
+         *
+         * @param  key  The cipher key to decrypt with.
+         * @param  text The cipher text to decrypt.
+         * @return      The decrypted plain text.
          */
         virtual std::string decrypt(int key, std::string text);
 
         /**
-         * @inheritDoc
+         * Cracks cipher text using brute force and dictionary lookups.
+         *
+         * @param  text The cipher text to crack.
+         * @return      The cracked key and the resulting plain text.
          */
         virtual std::tuple<int, std::string> crack(std::string text);
 

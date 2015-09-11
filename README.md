@@ -15,5 +15,10 @@ cipher to use with `-c`.
 - `-k [KEY]`:    Specify the integer key to use.
 - `-p`:          Print the cracked key along with the source text.
 
+For example, to encrypt the string "hello world" with a Caesar cipher using the
+key `7`, we can run:
+
+    echo "hello world" | cipher9 -e -k 7
+
 ## License
 This program is licensed under the [MIT license](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for details.

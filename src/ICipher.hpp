@@ -15,8 +15,8 @@ class ICipher
          * Encrypts plain text with the cipher using a given key.
          *
          * @param  key  The key to encrypt with.
-         * @param  text Plain text to encrypt.
-         * @return      The cipher text.
+         * @param  text The plain text to encrypt.
+         * @return      The encrypted cipher text.
          */
         virtual std::string encrypt(int key, std::string text) = 0;
 
@@ -24,7 +24,7 @@ class ICipher
          * Decrypts cipher text using a given key.
          *
          * @param  key  The key to decrypt with.
-         * @param  text Cipher text to decrypt.
+         * @param  text The cipher text to decrypt.
          * @return      The decrypted plain text.
          */
         virtual std::string decrypt(int key, std::string text) = 0;
@@ -32,7 +32,7 @@ class ICipher
         /**
          * Cracks cipher text using the best brute force algorithm for the cipher.
          *
-         * @param  text Cipher text to crack.
+         * @param  text The cipher text to crack.
          * @return      The cracked key and the resulting plain text.
          */
         virtual std::tuple<int, std::string> crack(std::string text) = 0;

@@ -16,17 +16,24 @@ CaesarCipher::CaesarCipher(Dictionary* dictionary)
 
 string CaesarCipher::encrypt(int key, string text)
 {
+    // Loop over every character in the plain text.
     for (unsigned int i = 0; i < text.length(); ++i) {
+        // Convert the character to lower case.
         int c = tolower(text[i]);
 
+        // If the character is a letter, encrypt it.
         if (c >= 'a' && c <= 'z') {
+            // The character is first shifted to its index in the alphabet (0-25),
+            // then the key shift is added to the value, wrapping around on overflow.
             c = (c - 'a' + key) % 26;
             if (c < 0) {
                 c += 26;
             }
+            // Shift the letter back to ASCII code.
             c += 'a';
         }
 
+        // Update the character value at the current spot in the string.
         text[i] = c;
     }
 
@@ -35,21 +42,9 @@ string CaesarCipher::encrypt(int key, string text)
 
 string CaesarCipher::decrypt(int key, string text)
 {
-    for (unsigned int i = 0; i < text.length(); ++i) {
-        int c = tolower(text[i]);
-
-        if (c >= 'a' && c <= 'z') {
-            c = (c - 'a' - key) % 26;
-            if (c < 0) {
-                c += 26;
-            }
-            c += 'a';
-        }
-
-        text[i] = c;
-    }
-
-    return text;
+    // Decrypting a Caesar cipher text is the inverse operation, so just negate
+    // the key and perform the encryption operation with the negated key.
+    return encrypt(0 - key, text);
 }
 
 tuple<int, string> CaesarCipher::crack(string text)
@@ -63,6 +58,7 @@ tuple<int, string> CaesarCipher::crack(string text)
         // Parse the plaintext into words to do a dictionary match.
         stringstream s(plain);
         unsigned int count = 0, matchedWords = 0;
+
         for (; s >> word; ++count) {
             // Strip punctuation from the word.
             string strippedWord;
@@ -74,11 +70,14 @@ tuple<int, string> CaesarCipher::crack(string text)
             }
         }
 
-        // If at least 50% of the words are in the dictionary, use this key as the solution.
+        // If at least 50% of the words are in the dictionary, mark the current
+        // key as the solution.
         if (matchedWords > count / 2) {
             return tuple<int, string>(key, plain);
         }
     }
 
+    // If no keys attempted could decrypt the text into English, assume the text
+    // is not a plain text message, which breaking cannot be automated.
     return tuple<int, string>(0, text);
 }

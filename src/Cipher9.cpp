@@ -82,6 +82,7 @@ void Cipher9::run()
 
     string outputText;
 
+    // Create a dictionary and a Caesar cipher.
     Dictionary* dict = new Dictionary();
     CaesarCipher* cipher = new CaesarCipher(dict);
 
