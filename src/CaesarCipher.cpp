@@ -17,7 +17,7 @@ CaesarCipher::CaesarCipher(Dictionary* dictionary)
 string CaesarCipher::encrypt(int key, string text)
 {
     // Loop over every character in the plain text.
-    for (unsigned int i = 0; i < text.length(); ++i) {
+    for (size_t i = 0; i < text.length(); ++i) {
         // Convert the character to lower case.
         int c = tolower(text[i]);
 

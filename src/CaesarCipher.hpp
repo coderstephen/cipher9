@@ -10,7 +10,7 @@
 /**
  * Implementation of the Caesar cipher.
  */
-class CaesarCipher : public ICipher
+class CaesarCipher : public ICipher<int>
 {
     public:
         /**

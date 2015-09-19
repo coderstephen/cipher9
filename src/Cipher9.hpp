@@ -30,6 +30,21 @@ class Cipher9
 
     private:
         /**
+         * Runs the cipher operations.
+         */
+        void runCipher(std::string inputText);
+
+        /**
+         * Runs the analysis operations.
+         */
+        void runAnalysis(std::string inputText);
+
+        /**
+         * Indicates the analyze operation.
+         */
+        bool doAnalyze = false;
+
+        /**
          * Indicates the encrypt operation.
          */
         bool doEncrypt = false;
@@ -50,6 +65,11 @@ class Cipher9
         bool printKey = false;
 
         /**
+         * The name of an input file.
+         */
+        std::string* fileName = NULL;
+
+        /**
          * The name of the cipher to use.
          */
         std::string* cipherName = NULL;
@@ -57,7 +77,7 @@ class Cipher9
         /**
          * The cipher key to use.
          */
-        int key = 0;
+        std::string* key = NULL;
 };
 
 #endif

@@ -8,7 +8,7 @@
 /**
  * Interface for all cipher classes.
  */
-class ICipher
+template <typename K> class ICipher
 {
     public:
         /**
@@ -18,7 +18,7 @@ class ICipher
          * @param  text The plain text to encrypt.
          * @return      The encrypted cipher text.
          */
-        virtual std::string encrypt(int key, std::string text) = 0;
+        virtual std::string encrypt(K key, std::string text) = 0;
 
         /**
          * Decrypts cipher text using a given key.
@@ -27,15 +27,7 @@ class ICipher
          * @param  text The cipher text to decrypt.
          * @return      The decrypted plain text.
          */
-        virtual std::string decrypt(int key, std::string text) = 0;
-
-        /**
-         * Cracks cipher text using the best brute force algorithm for the cipher.
-         *
-         * @param  text The cipher text to crack.
-         * @return      The cracked key and the resulting plain text.
-         */
-        virtual std::tuple<int, std::string> crack(std::string text) = 0;
+        virtual std::string decrypt(K key, std::string text) = 0;
 
         virtual ~ICipher() {}
 };
