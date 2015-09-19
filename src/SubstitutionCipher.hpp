@@ -14,6 +14,14 @@ class SubstitutionCipher : public ICipher<std::string>
 {
     public:
         /**
+         * Parses a key word and returns a full 26 character key.
+         *
+         * @param  key The key word.
+         * @return     The substitution key.
+         */
+        std::string createKey(std::string key);
+
+        /**
          * Encrypts the given text using a Caesar cipher.
          *
          * @param  key  The cipher key to use.
