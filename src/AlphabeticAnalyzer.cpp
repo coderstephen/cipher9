@@ -42,7 +42,7 @@ tuple<map<char, unsigned int>, unsigned int> AlphabeticAnalyzer::analyze(string 
 /**
  * Time complexity is Θ(n), where n is the string length.
  */
-map<string, unsigned int> AlphabeticAnalyzer::digrams(string text)
+map<string, unsigned int> AlphabeticAnalyzer::ngrams(string text, unsigned int length)
 {
     map<string, unsigned int> frequencies;
     unsigned int wordLength = 0;
@@ -56,8 +56,8 @@ map<string, unsigned int> AlphabeticAnalyzer::digrams(string text)
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
             ++wordLength;
 
-            if (wordLength == 2) {
-                word = text.substr(i - 1, 2);
+            if (wordLength == length) {
+                word = text.substr(i - length + 1, length);
                 transform(word.begin(), word.end(), word.begin(), ::tolower);
 
                 if (frequencies.count(word) == 0) {

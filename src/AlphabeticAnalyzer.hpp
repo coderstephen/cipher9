@@ -22,12 +22,13 @@ class AlphabeticAnalyzer
         std::tuple<std::map<char, unsigned int>, unsigned int> analyze(std::string text);
 
         /**
-         * Finds all digrams and returns their frequencies.
+         * Finds all n-grams and returns their frequencies.
          *
-         * @param  text The cipher text to analyze.
-         * @return      A map of digrams to their frequencies in the text.
+         * @param  text   The cipher text to analyze.
+         * @param  length The n-gram length.
+         * @return        A map of n-grams to their frequencies in the text.
          */
-        std::map<std::string, unsigned int> digrams(std::string text);
+        std::map<std::string, unsigned int> ngrams(std::string text, unsigned int length);
 };
 
 #endif

@@ -175,8 +175,14 @@ void Cipher9::runAnalysis(string inputText)
     cout << endl;
 
     // Display digram frequencies.
-    map<string, unsigned int> digrams = analyzer.digrams(inputText);
+    map<string, unsigned int> digrams = analyzer.ngrams(inputText, 2);
     for (map<string, unsigned int>::iterator it = digrams.begin(); it != digrams.end(); ++it) {
+        cout << it->first << " " << setw(6) << it->second << endl;
+    }
+
+    // Display trigram frequencies.
+    map<string, unsigned int> trigrams = analyzer.ngrams(inputText, 3);
+    for (map<string, unsigned int>::iterator it = trigrams.begin(); it != trigrams.end(); ++it) {
         cout << it->first << " " << setw(6) << it->second << endl;
     }
 }
