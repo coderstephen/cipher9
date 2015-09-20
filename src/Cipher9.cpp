@@ -97,6 +97,7 @@ void Cipher9::run()
     // Read input from the given file.
     if (fileName != NULL) {
         ifstream file(fileName->c_str());
+        file >> noskipws;
         istream_iterator<char> it(file);
         istream_iterator<char> end;
         inputText = string(it, end);
