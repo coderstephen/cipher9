@@ -13,7 +13,7 @@ Compilation can be done with the standard `make` build tool:
 The resulting binary will be placed at `bin/cipher9`.
 
 ## Usage
-    cipher9 [OPTION]...
+    cipher9 [-a|-d|-e] [OPTION]...
 
 * `-a`: Analyze the input string and print the letter frequencies.
 * `-c [CIPHER]` - Specify the cipher to use. Valid cipher names are:
@@ -22,7 +22,7 @@ The resulting binary will be placed at `bin/cipher9`.
 * `-d`:          Decrypt the input text instead. Use with `-k'
 * `-e`:          Encrypt the input text instead. Use with `-k'
 * `-f [FILE]`:   Specify a file to read input from instead of stdin.
-* `-h`:          Show this help message.
+* `-h`:          Show a detailed help message.
 * `-k [KEY]`:    Specify the cipher key to use. Valid key formats depend on the cipher being used.
 * `-p`:          Print the cracked key along with the source text.
 
