@@ -10,7 +10,7 @@ string SubstitutionCipher::createKey(string key)
     // Add only unique characters in the key word.
     for (size_t i = 0; i < key.length(); ++i) {
         if (parsedKey.find(key[i]) == string::npos) {
-            parsedKey.append(1, key[i]);
+            parsedKey.append(1, tolower(key[i]));
         }
     }
 
@@ -33,13 +33,12 @@ string SubstitutionCipher::encrypt(string key, string text)
 
     // Loop over every character in the plain text.
     for (size_t i = 0; i < text.length(); ++i) {
-        // Convert the character to lower case.
-        int c = tolower(text[i]);
+        int c = text[i];
 
         // If the character is a letter, substitute it with a character from the key
-        if (c >= 'a' && c <= 'z') {
+        if (c >= 'A' && c <= 'Z') {
             // Select the corresponding character from the key.
-            c = key[(c - 'a')];
+            c = key[(c - 'A')];
         }
 
         // Update the character value at the current spot in the string.
@@ -55,13 +54,12 @@ string SubstitutionCipher::decrypt(string key, string text)
 
     // Loop over every character in the cipher text.
     for (size_t i = 0; i < text.length(); ++i) {
-        // Convert the character to lower case.
-        int c = tolower(text[i]);
+        int c = text[i];
 
         // If the character is a letter, restore it with a character from the key.
-        if (c >= 'a' && c <= 'z') {
+        if (c >= 'A' && c <= 'Z') {
             // Find the position that produces the given substitution.
-            c = key.find(c) + 'a';
+            c = key.find(tolower(c)) + 'a';
         }
 
         // Update the character value at the current spot in the string.
