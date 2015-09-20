@@ -1,7 +1,7 @@
 # Letter and n-gram frequencies
 frequencies were obtained using the command
 
-    cipher9 -a < data/project1.txt
+    cipher9 -a < docs/project1.txt
 
 and then studied for patterns. Below are my results each step of the analysis.
 
