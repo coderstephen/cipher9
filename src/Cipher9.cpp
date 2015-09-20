@@ -53,11 +53,11 @@ Cipher9::Cipher9(int argc, char** argv)
             case '?':
                 doHelp = true;
                 if (optopt == 'c' || optopt == 'f' || optopt == 'k') {
-                    fprintf(stderr, "Option -%c requires an argument.\n", optopt);
+                    fprintf(stderr, "Error: option -%c requires an argument.\n", optopt);
                 } else if (isprint(optopt)) {
-                    fprintf(stderr, "Unknown option `-%c'.\n", optopt);
+                    fprintf(stderr, "Error: unknown option `-%c'.\n", optopt);
                 } else {
-                    fprintf(stderr, "Unknown option character `\\x%x'.\n", optopt);
+                    fprintf(stderr, "Error: unknown option character `\\x%x'.\n", optopt);
                 }
                 break;
         }
@@ -71,12 +71,17 @@ void Cipher9::printUsage()
             "the plain text. Default cipher used is \"caesar\". Specify another\n"
             "cipher to use with `-c'.\n\n"
             "  -a            Analyze the input string and print the letter frequencies.\n"
-            "  -c [CIPHER]   Specify the cipher to use.\n"
+            "  -c [CIPHER]   Specify the cipher to use. Valid cipher names are:\n"
+            "                  caesar     - Caesar cipher. Keys should be an integer\n"
+            "                               indicating the number of letters to shift.\n"
+            "                  substitute - Monoalphabetic substitution cipher. Keys\n"
+            "                               should be strings up to 26 letters long.\n"
             "  -d            Decrypt the input text instead. Use with `-k'.\n"
             "  -e            Encrypt the input text instead. Use with `-k'.\n"
             "  -f [FILE]     Specify a file to read input from instead of stdin.\n"
             "  -h            Show this help message.\n"
-            "  -k [KEY]      Specify the integer key to use.\n"
+            "  -k [KEY]      Specify the cipher key to use. Valid key formats depend\n"
+            "                on the cipher being used.\n"
             "  -p            Print the cracked key along with the source text.\n";
 }
 
@@ -116,7 +121,7 @@ void Cipher9::runCipher(string inputText)
 {
     string outputText;
 
-    if (cipherName == NULL) {
+    if (cipherName == NULL || *cipherName == "caesar") {
         // Create a dictionary and a Caesar cipher.
         Dictionary* dict = new Dictionary();
         CaesarCipher* cipher = new CaesarCipher(dict);
@@ -134,7 +139,7 @@ void Cipher9::runCipher(string inputText)
         }
     }
 
-    else if (*cipherName == "sub") {
+    else if (*cipherName == "substitute") {
         SubstitutionCipher* cipher = new SubstitutionCipher();
 
         if (doEncrypt) {
@@ -142,6 +147,12 @@ void Cipher9::runCipher(string inputText)
         } else if (doDecrypt) {
             outputText = cipher->decrypt(*key, inputText);
         }
+    }
+
+    // Cipher provided not recognized.
+    else {
+        cerr << "Error: cipher \"" << *cipherName << "\" not recognized." << endl;
+        exit(1);
     }
 
     // Print the result.

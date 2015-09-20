@@ -15,12 +15,16 @@ The resulting binary will be placed at `bin/cipher9`.
 ## Usage
     cipher9 [OPTION]...
 
-- `-c [CIPHER]`: Specify the cipher to use.
-- `-d`:          Decrypt the input text instead. Use with `-k'
-- `-e`:          Encrypt the input text instead. Use with `-k'
-- `-h`:          Show this help message.
-- `-k [KEY]`:    Specify the integer key to use.
-- `-p`:          Print the cracked key along with the source text.
+* `-a`: Analyze the input string and print the letter frequencies.
+* `-c [CIPHER]` - Specify the cipher to use. Valid cipher names are:
+    * `caesar`: Caesar cipher. Keys should be an integer indicating the number of letters to shift.
+    * `substitute`: Monoalphabetic substitution cipher. Keys should be strings up to 26 letters long.
+* `-d`:          Decrypt the input text instead. Use with `-k'
+* `-e`:          Encrypt the input text instead. Use with `-k'
+* `-f [FILE]`:   Specify a file to read input from instead of stdin.
+* `-h`:          Show this help message.
+* `-k [KEY]`:    Specify the cipher key to use. Valid key formats depend on the cipher being used.
+* `-p`:          Print the cracked key along with the source text.
 
 For example, to encrypt the string "hello world" with a Caesar cipher using the
 key `7`, we can run:
