@@ -1,0 +1,88 @@
+# Letter and n-gram frequencies
+frequencies were obtained using the command
+
+    cipher9 -a < data/project1.txt
+
+and then studied for patterns. Below are my results each step of the analysis.
+
+
+# Analysis of frequencies
+D and V are most frequent, so are probably "e" and "t".
+
+Current knowledge:
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+            D                             V
+
+VI most frequent digram and VID most frequent trigram, so VID is probably "the".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+            D     I                       V
+
+INXDY'V also common, could be "haven't".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N       D     I           Y           V   X
+
+VJ is common, could be "to".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N       D     I           Y J         V   X
+
+JRV, VQJ, and NYP could be "out", "two", and "and".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N     P D     I           Y J         V R X Q
+
+FID could be "she" and KV could be "it".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N     P D     I K         Y J       F V R X Q
+
+TJR'XD could be "you've" and QJRLP'XD could be "would've".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N     P D     I K     L   Y J       F V R X Q   T
+
+FJHD could be "some" and FJHDVIKYA could be "something".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N     P D   A I K     L H Y J       F V R X Q   T
+
+FVGJYA could be "strong".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N     P D   A I K     L H Y J     G F V R X Q   T
+
+OD could be "be" and NOJRV could be "about".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N O   P D   A I K     L H Y J     G F V R X Q   T
+
+BJYFBKDYBD could be "conscience".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N O B P D   A I K     L H Y J     G F V R X Q   T
+
+LJJCDP could be "looked" and BGNBC could be "crack".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N O B P D   A I K   C L H Y J     G F V R X Q   T
+
+ERFV could be "just" and EKHHT could be "jimmy".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N O B P D   A I K E C L H Y J     G F V R X Q   T
+
+MDRF could be "zeus" and DSZLNKYDP could be "explained".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N O B P D   A I K E C L H Y J Z   G F V R X Q S T M
+
+JU could be "of" and WRKBC could be "quick".
+
+    a b c d e f g h i j k l m n o p q r s t u v w x y z
+    N O B P D U A I K E C L H Y J Z W G F V R X Q S T M
+
+# Success!
+Key: nobpduaikeclhyjzwgfvrxqstm
